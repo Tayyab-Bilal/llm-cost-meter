@@ -84,7 +84,9 @@ async def test_subagent_cost_attributed_to_entry_point(make_meter):
 def test_unknown_service_label_rejected(make_meter):
     with pytest.raises(UnregisteredBillingLabel):
         factory = fake_llm_factory("x")
-        metered_chat_model("shiny_new_feature", "acme-chat", llm_factory=factory, meter=make_meter())  # billing-guard: ok
+        metered_chat_model(  # billing-guard: ok
+            "shiny_new_feature", "acme-chat", llm_factory=factory, meter=make_meter()
+        )
 
 
 async def test_provider_error_before_any_token_credits_back_the_estimate(make_meter):
