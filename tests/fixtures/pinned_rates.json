@@ -1,0 +1,7 @@
+{
+  "acme-chat": {"input_per_mtok": "3", "output_per_mtok": "15", "cached_input_per_mtok": "0.3"},
+  "cheap-model": {"input_per_mtok": "1", "output_per_mtok": "5", "cached_input_per_mtok": "0.1"},
+  "doc-parser": {"per_page": "0.01"},
+  "no-cache-model": {"input_per_mtok": "3", "output_per_mtok": "15"},
+  "reranker": {"per_rerank": "0.002"}
+}

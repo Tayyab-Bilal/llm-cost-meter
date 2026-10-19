@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "llm-cost-meter"
+version = "0.1.0"
+description = "One cost and token meter for every AI call, with streaming credit enforcement."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+  "langchain-core>=0.3",
+  "redis>=5",
+  "fastapi>=0.110",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-asyncio>=0.23", "fakeredis[lua]>=2.23", "httpx>=0.27", "ruff>=0.5"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/llm_cost_meter"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+norecursedirs = ["tests/fixtures"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/test_guard_and_reconcile.py" = ["E501"]
